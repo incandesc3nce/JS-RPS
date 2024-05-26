@@ -3,18 +3,24 @@ const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
 rockButton.addEventListener('click', () => {
+    const humanChoice = 'rock';
     const computerChoice = getComputerChoice();
-    const result = playRound('rock', computerChoice);
+    const result = playRound(humanChoice, computerChoice);
+    updatePicks(humanChoice, computerChoice);
     console.log(result);
 })
 paperButton.addEventListener('click', () => {
+    const humanChoice = 'paper';
     const computerChoice = getComputerChoice();
-    const result = playRound('paper', computerChoice);
+    const result = playRound(humanChoice, computerChoice);
+    updatePicks(humanChoice, computerChoice);
     console.log(result);
 })
 scissorsButton.addEventListener('click', () => {
+    const humanChoice = 'scissors';
     const computerChoice = getComputerChoice();
-    const result = playRound('scissors', computerChoice);
+    const result = playRound(humanChoice, computerChoice);
+    updatePicks(humanChoice, computerChoice);
     console.log(result);
 })
 
@@ -53,5 +59,18 @@ function playRound(humanChoice, computerChoice) {
     return humanWon;
 }
 
+function updatePicks(humanPick, computerPick) {
+    const human = document.querySelector("#human_pick");
+    const computer = document.querySelector("#comp_pick");
+
+    human.textContent = capitalizeFirstLetter(humanPick);
+    computer.textContent = capitalizeFirstLetter(computerPick);
+}
 
 
+
+
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
