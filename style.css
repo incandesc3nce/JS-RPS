@@ -25,6 +25,11 @@
     padding: 5%;
 }
 
+.score {
+    flex-direction: column;
+    text-align: center;
+}
+
 .buttons {
     display: flex;
     flex-direction: row;

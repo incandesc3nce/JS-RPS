@@ -12,15 +12,20 @@
             <h1>Rock Paper Scissors</h1>
         </div>
         <div id="buttons" class="flex buttons">
-            <button>Rock</button>
-            <button>Paper</button>
-            <button>Scissors</button>
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
         </div>
         <div class="flex picks">
-            <p>Your pick: </p>
-            <p>Computer's pick: </p>
+            <p>Your pick: <span id="human_pick"></span></p>
+            <p>Computer's pick: <span id="comp_pick"></span></p>
+            
+        </div>
+        <div class="flex score">
+            <p id="result"></p>
+            <p><b>Score</b>: 0:0</p>
         </div>
     </div>
-    <!-- <script src="main.js"></script> -->
+    <script src="main.js"></script>
 </body>
 </html>
