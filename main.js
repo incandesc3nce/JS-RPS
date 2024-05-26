@@ -7,6 +7,7 @@ rockButton.addEventListener('click', () => {
     const computerChoice = getComputerChoice();
     const result = playRound(humanChoice, computerChoice);
     updatePicks(humanChoice, computerChoice);
+    updateResultText(humanChoice, computerChoice, result);
     updateScore(result);
 })
 paperButton.addEventListener('click', () => {
@@ -14,6 +15,7 @@ paperButton.addEventListener('click', () => {
     const computerChoice = getComputerChoice();
     const result = playRound(humanChoice, computerChoice);
     updatePicks(humanChoice, computerChoice);
+    updateResultText(humanChoice, computerChoice, result);
     updateScore(result);
 })
 scissorsButton.addEventListener('click', () => {
@@ -21,6 +23,7 @@ scissorsButton.addEventListener('click', () => {
     const computerChoice = getComputerChoice();
     const result = playRound(humanChoice, computerChoice);
     updatePicks(humanChoice, computerChoice);
+    updateResultText(humanChoice, computerChoice, result);
     updateScore(result);
 })
 
@@ -67,7 +70,6 @@ function updatePicks(humanPick, computerPick) {
     computer.textContent = capitalizeFirstLetter(computerPick);
 }
 
-
 function updateScore(humanWon) {
     const humanScore = document.querySelector("#human_score");
     const computerScore = document.querySelector("#comp_score");
@@ -83,7 +85,19 @@ function updateScore(humanWon) {
     }
 }
 
+function updateResultText(humanPick, computerPick, humanWon) {
+    const resultContainer = document.querySelector("#result");
+    let resultText = "";
+    if (humanWon) {
+        resultText = `You Won! ${capitalizeFirstLetter(humanPick)} beats ${capitalizeFirstLetter(computerPick)}.`
+    } else if (humanWon == false) {
+        resultText = `You Lost! ${capitalizeFirstLetter(computerPick)} beats ${capitalizeFirstLetter(humanPick)}.`
+    } else {
+        resultText = `Draw!`;
+    }
 
+    resultContainer.textContent = resultText;
+}
 
 
 function capitalizeFirstLetter(string) {
