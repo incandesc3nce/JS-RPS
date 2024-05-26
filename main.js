@@ -1,3 +1,23 @@
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+
+rockButton.addEventListener('click', () => {
+    const computerChoice = getComputerChoice();
+    const result = playRound('rock', computerChoice);
+    console.log(result);
+})
+paperButton.addEventListener('click', () => {
+    const computerChoice = getComputerChoice();
+    const result = playRound('paper', computerChoice);
+    console.log(result);
+})
+scissorsButton.addEventListener('click', () => {
+    const computerChoice = getComputerChoice();
+    const result = playRound('scissors', computerChoice);
+    console.log(result);
+})
+
 function getComputerChoice() {
   const randomChoice = Math.random();
 
@@ -10,35 +30,12 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice() {
-    while (true) { 
-        let choice = prompt('Select one: "Rock", "Paper" or "Scissors"', '');
-
-        if (choice === 'rock' || choice === 'paper' || choice === 'scissors') {
-            return choice;
-        } else {
-            alert('Incorrect option! Choose one of the three.');
-        }
-    }
-}
-
-
-function getFinalMessage(humanScore, computerScore) {
-    if (humanScore > computerScore) {
-        return finalMessage = `Match ended with your victory! Congratulations!\n\nScore:\nYou: ${humanScore} | Computer: ${computerScore}`;
-    } else if (humanScore < computerScore) {
-        return finalMessage = `Match ended with Computer's victory. :c \n\nScore:\nYou: ${humanScore} | Computer: ${computerScore}`;
-    } else {
-        return finalMessage = `Match ended with draw. \n\nScore:\nYou: ${humanScore} | Computer: ${computerScore}`
-    }
-}
-
 function playRound(humanChoice, computerChoice) {
     let alertMessage = ``;
     let humanWon = undefined;
     
     if (humanChoice === computerChoice) {
-        return humanWon;
+        return undefined;
     } else if ( 
         (humanChoice === 'rock' && computerChoice === 'paper') ||
         (humanChoice === 'paper' && computerChoice === 'scissors') ||
@@ -56,44 +53,5 @@ function playRound(humanChoice, computerChoice) {
     return humanWon;
 }
 
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
 
-    let roundsPlayed = 0;
-
-    while (roundsPlayed < 5) {
-        const computerChoice = getComputerChoice().toLowerCase();
-        const humanChoice = getHumanChoice().toLowerCase();
-
-        const humanWon = playRound(humanChoice, computerChoice);
-
-        let alertMessage;
-
-        if (humanWon === true) {
-            humanScore += 1;
-            alertMessage = `You Won! ${humanChoice} beats ${computerChoice}. \n\n Score:\nYou: ${humanScore} | Computer: ${computerScore}`;
-        } else if (humanWon === false) {
-            computerScore += 1;
-            alertMessage = `You Lost! ${computerChoice} beats ${humanChoice}. \n\n Score:\nYou: ${humanScore} | Computer: ${computerScore}`;
-        } else {
-            alertMessage = `Draw! \n\nScore:\nYou: ${humanScore} | Computer: ${computerScore}`;
-        }
-
-        alert(alertMessage);
-        roundsPlayed += 1;
-    }
-
-    let finalMessage = getFinalMessage(humanScore, computerScore);
-
-
-    alert(finalMessage);
-}
-
-while (true) {
-    playGame();
-
-    let restartChoice = confirm('Press "OK" to restart.');
-    if (restartChoice === false) break;
-}
 
