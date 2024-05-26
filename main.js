@@ -7,21 +7,21 @@ rockButton.addEventListener('click', () => {
     const computerChoice = getComputerChoice();
     const result = playRound(humanChoice, computerChoice);
     updatePicks(humanChoice, computerChoice);
-    console.log(result);
+    updateScore(result);
 })
 paperButton.addEventListener('click', () => {
     const humanChoice = 'paper';
     const computerChoice = getComputerChoice();
     const result = playRound(humanChoice, computerChoice);
     updatePicks(humanChoice, computerChoice);
-    console.log(result);
+    updateScore(result);
 })
 scissorsButton.addEventListener('click', () => {
     const humanChoice = 'scissors';
     const computerChoice = getComputerChoice();
     const result = playRound(humanChoice, computerChoice);
     updatePicks(humanChoice, computerChoice);
-    console.log(result);
+    updateScore(result);
 })
 
 function getComputerChoice() {
@@ -67,6 +67,21 @@ function updatePicks(humanPick, computerPick) {
     computer.textContent = capitalizeFirstLetter(computerPick);
 }
 
+
+function updateScore(humanWon) {
+    const humanScore = document.querySelector("#human_score");
+    const computerScore = document.querySelector("#comp_score");
+
+    if (humanWon) {
+        const score = parseInt(humanScore.textContent);
+        humanScore.textContent = score + 1; 
+    } else if (humanWon == false) {
+        const score = parseInt(computerScore.textContent);
+        computerScore.textContent = score + 1;
+    } else {
+        return;
+    }
+}
 
 
 
